@@ -2,36 +2,36 @@
 
 > Lightweight currency conversion library, successor of money.js
 
-[![Build Status](https://github.com/xxczaki/cashify/workflows/CI/badge.svg)](https://github.com/xxczaki/cashify/actions?query=workflow%3ACI)
-[![Coverage Status](https://coveralls.io/repos/github/xxczaki/cashify/badge.svg?branch=master)](https://coveralls.io/github/xxczaki/cashify?branch=master)
+[![Build Status](https://github.com/afzalimdad9/cashify/workflows/CI/badge.svg)](https://github.com/afzalimdad9/cashify/actions?query=workflow%3ACI)
+[![Coverage Status](https://coveralls.io/repos/github/afzalimdad9/cashify/badge.svg?branch=master)](https://coveralls.io/github/afzalimdad9/cashify?branch=master)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
-[![install size](https://packagephobia.now.sh/badge?p=cashify)](https://packagephobia.now.sh/result?p=cashify)
-![minified size](https://img.shields.io/bundlephobia/minzip/cashify)
+[![install size](https://packagephobia.now.sh/badge?p=@afzalimdad9/cashify)](https://packagephobia.now.sh/result?p=@afzalimdad9/cashify)
+![minified size](https://img.shields.io/bundlephobia/minzip/@afzalimdad9/cashify)
 [![Mentioned in Awesome Node.js](https://awesome.re/mentioned-badge.svg)](https://github.com/sindresorhus/awesome-nodejs)
 
 - [Motivation](#motivation)
 - [Highlights](#highlights)
 - [Install](#install)
 - [Usage](#usage)
-	- [With constructor](#with-constructor)
-	- [Without constructor](#without-constructor)
-	- [Parsing](#parsing)
-	- [Integration with big.js](#integration-bigjs)
-	- [Integration with currency.js](#integration-currencyjs)
+  - [With constructor](#with-constructor)
+  - [Without constructor](#without-constructor)
+  - [Parsing](#parsing)
+  - [Integration with big.js](#integration-bigjs)
+  - [Integration with currency.js](#integration-currencyjs)
 - [API](#api)
-	- [Cashify({base, rates})](#cashifybase-rates)
-		- [base](#base)
-		- [rates](#rates)
-		- [BigJs](#bigjs)
-	- [convert(amount, {from, to, base, rates})](#convertamount-from-to-base-rates-with-and-without-constructor)
-        - [amount](#amount)
-        - [from](#from)
-        - [to](#to)
-        - [base](#base-1)
-        - [rates](#rates-1)
-        - [BigJs](#bigjs-1)
-    - [parse(expression)](#parseexpression)
-        - [expression](#expression)
+  - [Cashify({base, rates})](#cashifybase-rates)
+    - [base](#base)
+    - [rates](#rates)
+    - [BigJs](#bigjs)
+  - [convert(amount, {from, to, base, rates})](#convertamount-from-to-base-rates-with-and-without-constructor)
+  - [amount](#amount)
+  - [from](#from)
+  - [to](#to)
+  - [base](#base-1)
+  - [rates](#rates-1)
+  - [BigJs](#bigjs-1)
+  - [parse(expression)](#parseexpression)
+    - [expression](#expression)
 - [Migrating from money.js](#migrating-from-moneyjs)
 - [Floating point issues](#floating-point-issues)
 - [Related projects](#related-projects)
@@ -42,12 +42,13 @@
 ## Motivation
 
 This package was created, because the popular [money.js](http://openexchangerates.github.io/money.js/) library:
-* is not maintained (last commit was ~5 years ago)
-* has over 20 open issues
-* does not support TypeScript
-* has implicit globals
-* does not have any unit tests
-* [has floating point issues](#floating-point-issues)
+
+- is not maintained (last commit was ~5 years ago)
+- has over 20 open issues
+- does not support TypeScript
+- has implicit globals
+- does not have any unit tests
+- [has floating point issues](#floating-point-issues)
 
 ## Highlights
 
@@ -62,7 +63,7 @@ This package was created, because the popular [money.js](http://openexchangerate
 ## Install
 
 ```
-$ npm install cashify
+npm install @afzalimdad9/cashify
 ```
 
 **Please note that starting with version `3.0.0` this package is ESM-only and thus requires Node.js v14 or higher.**
@@ -72,12 +73,12 @@ $ npm install cashify
 ### With constructor
 
 ```js
-import {Cashify} from 'cashify';
+import {Cashify} from '@afzalimdad9/cashify';
 
 const rates = {
-	GBP: 0.92,
-	EUR: 1.00,
-	USD: 1.12
+ GBP: 0.92,
+ EUR: 1.00,
+ USD: 1.12
 };
 
 const cashify = new Cashify({base: 'EUR', rates});
@@ -92,12 +93,12 @@ console.log(result); //=> 9.2
 Using the `Cashify` constructor is not required. Instead, you can just use the `convert` function:
 
 ```js
-import {convert} from 'cashify';
+import {convert} from '@afzalimdad9/cashify';
 
 const rates = {
-	GBP: 0.92,
-	EUR: 1.00,
-	USD: 1.12
+ GBP: 0.92,
+ EUR: 1.00,
+ USD: 1.12
 };
 
 const result = convert(10, {from: 'EUR', to: 'GBP', base: 'EUR', rates});
@@ -110,12 +111,12 @@ console.log(result); //=> 9.2
 Cashify supports parsing, so you can pass a `string` to the `amount` argument and the `from` and/or `to` currency will be automatically detected:
 
 ```js
-import {Cashify} from 'cashify';
+import {Cashify} from '@afzalimdad9/cashify';
 
 const rates = {
-	GBP: 0.92,
-	EUR: 1.00,
-	USD: 1.12
+ GBP: 0.92,
+ EUR: 1.00,
+ USD: 1.12
 };
 
 const cashify = new Cashify({base: 'EUR', rates});
@@ -156,16 +157,16 @@ import {Cashify} from 'cashify';
 import Big from 'big.js';
 
 const rates = {
-	EUR: 0.8235,
-	USD: 1
+ EUR: 0.8235,
+ USD: 1
 };
 
 const cashify = new Cashify({base: 'USD', rates});
 
 const result = cashify.convert(1, {
-	from: 'USD',
-	to: 'EUR',
-	BigJs: Big
+ from: 'USD',
+ to: 'EUR',
+ BigJs: Big
 });
 
 console.log(result); //=> 8.235 (without big.js you would get something like 0.8234999999999999)
@@ -182,9 +183,9 @@ import {Cashify} from 'cashify';
 import currency from 'currency.js';
 
 const rates = {
-	GBP: 0.92,
-	EUR: 1.00,
-	USD: 1.12
+ GBP: 0.92,
+ EUR: 1.00,
+ USD: 1.12
 };
 
 const cashify = new Cashify({base: 'EUR', rates});
@@ -265,9 +266,9 @@ Returns an `object`, which contains parsing results:
 
 ```
 {
-	amount: number;
-	from: string | undefined;
-	to: string | undefined;
+ amount: number;
+ from: string | undefined;
+ to: string | undefined;
 }
 ```
 
@@ -287,15 +288,15 @@ With `Cashify` constructor:
 
 - fx.base = 'EUR';
 - fx.rates = {
--	GBP: 0.92,
--	EUR: 1.00,
--	USD: 1.12
+- GBP: 0.92,
+- EUR: 1.00,
+- USD: 1.12
 - };
 
 + const rates = {
-+	 GBP: 0.92,
-+	 EUR: 1.00,
-+	 USD: 1.12
++  GBP: 0.92,
++  EUR: 1.00,
++  USD: 1.12
 + };
 
 + const cashify = new Cashify({base: 'EUR', rates});
@@ -312,15 +313,15 @@ With `convert` function:
 
 - fx.base = 'EUR';
 - fx.rates = {
--	GBP: 0.92,
--	EUR: 1.00,
--	USD: 1.12
+- GBP: 0.92,
+- EUR: 1.00,
+- USD: 1.12
 - };
 
 + const rates = {
-+	 GBP: 0.92,
-+	 EUR: 1.00,
-+	 USD: 1.12
++  GBP: 0.92,
++  EUR: 1.00,
++  USD: 1.12
 + };
 
 - fx.convert(10, {from: 'GBP', to: 'EUR'});
@@ -335,11 +336,11 @@ Let's take a look at the following example:
 
 ```js
 import fx from 'money';
-import {Cashify} from 'cashify';
+import {Cashify} from '@afzalimdad9/cashify';
 
 const rates = {
-	GBP: 0.92,
-	USD: 1.12
+ GBP: 0.92,
+ USD: 1.12
 };
 
 fx.rates = rates;
@@ -357,9 +358,9 @@ Cashify solves this problem the same way as [currency.js](https://github.com/scu
 
 ## Related projects
 
-* [nestjs-cashify](https://github.com/vahidvdn/nestjs-cashify) - Node.js Cashify module for Nest.js.
-* [cashify-rs](https://github.com/xxczaki/cashify-rs) - Cashify port for Rust.
+- [nestjs-cashify](https://github.com/vahidvdn/nestjs-cashify) - Node.js Cashify module for Nest.js.
+- [cashify-rs](https://github.com/xxczaki/cashify-rs) - Cashify port for Rust.
 
 ## License
 
-MIT © [Antoni Kępiński](https://www.kepinski.ch)
+MIT © [Afzal Imdad](https://afzalimdad9.vercel.app)

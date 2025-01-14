@@ -1,5 +1,5 @@
 {
-    "name": "cashify",
+    "name": "@afzalimdad9/cashify",
     "version": "3.0.1",
     "description": "Lightweight currency conversion library, successor of money.js",
     "main": "dist/index.js",
@@ -8,9 +8,9 @@
     "files": [
         "dist/**/*"
     ],
-    "author": "Antoni Kępiński <antoni@kepinski.ch> (https://www.kepinski.ch)",
+    "author": "Afzal Imdad <afzalimdad9@gmail.com> (https://afzalimdad9.vercel.app)",
     "bugs": {
-        "url": "https://github.com/xxczaki/cashify/issues"
+        "url": "https://github.com/afzalimdad9/cashify/issues"
     },
     "scripts": {
         "prebuild": "del-cli dist",
@@ -22,12 +22,8 @@
         "node": ">=14"
     },
     "license": "MIT",
-    "repository": "xxczaki/cashify",
-    "homepage": "https://github.com/xxczaki/cashify",
-    "funding": {
-        "type": "opencollective",
-        "url": "https://opencollective.com/cashify"
-    },
+    "repository": "afzalimdad9/cashify",
+    "homepage": "https://github.com/afzalimdad9/cashify",
     "keywords": [
         "cashify",
         "cash",
