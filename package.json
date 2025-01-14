@@ -1,6 +1,6 @@
 {
     "name": "@afzalimdad9/cashify",
-    "version": "3.0.1",
+    "version": "3.0.2",
     "description": "Lightweight currency conversion library, successor of money.js",
     "main": "dist/index.js",
     "type": "module",
@@ -69,7 +69,8 @@
     },
     "xo": {
         "rules": {
-            "@typescript-eslint/naming-convention": "off"
+            "@typescript-eslint/naming-convention": "off",
+            "unicorn/expiring-todo-comments": "off"
         }
     },
     "dependencies": {

@@ -1,5 +1,5 @@
 import test from 'ava';
-import Big from 'big.js';
+import {Big} from 'big.js';
 import {Cashify, convert, parse} from './src/index.js';
 
 const rates = {
